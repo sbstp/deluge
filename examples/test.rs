@@ -5,19 +5,21 @@ extern crate deluge;
 extern crate serde;
 
 use deluge::rencode::{decode, encode};
+use deluge::rencode::Value;
+use std::collections::HashMap;
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Msg {
-    name: String,
-    code: i32,
+    name: Value,
+    code: Value,
 }
 
 fn main() {
     let orig = Msg {
-        name: "bob".into(),
-        code: -133,
+        name: Value::String("abc".into()),
+        code: Value::I64(-133),
     };
     let data = encode(orig).unwrap();
-    let dest: Msg = decode(&data[..]).unwrap();
+    let dest: HashMap<String, Value> = decode(&data[..]).unwrap();
     println!("{:#?}", dest);
 }
