@@ -6,3 +6,4 @@ authors = ["Simon Bernier St-Pierre <sbernierstpierre@gmail.com>"]
 [dependencies]
 byteorder = "0.3.13"
 serde = "0.6.1"
+serde_macros = "0.6.1"
